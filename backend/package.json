@@ -1,0 +1,29 @@
+{
+  "name": "pos-server",
+  "version": "1.0.0",
+  "description": "POS System Backend Server",
+  "main": "src/index.js",
+  "scripts": {
+    "dev:server": "nodemon src/index.js",
+    "dev:frontend": "npm run dev --prefix ../frontend",
+    "dev": "concurrently -k -n backend,frontend -c cyan,magenta \"npm run dev:server\" \"npm run dev:frontend\"",
+    "build": "node scripts/prepare-dist.js",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "ioredis": "^5.3.2",
+    "multer": "^2.0.2",
+    "mysql2": "^3.6.5",
+    "recharts": "^3.8.1"
+  },
+  "devDependencies": {
+    "@types/recharts": "^1.8.29",
+    "concurrently": "^9.2.4",
+    "nodemon": "^3.0.2"
+  }
+}

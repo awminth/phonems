@@ -1,0 +1,71 @@
+use dkophone;
+
+SET FOREIGN_KEY_CHECKS = 0;
+SET SQL_SAFE_UPDATES = 0;
+
+truncate table tblcategory;
+
+-- ==========================================
+-- 1. SALES TABLES
+-- ==========================================
+truncate table tblsale;
+truncate table tblsale_temp;
+truncate table tblsale_return;
+truncate table tblsale_return_voucher;
+truncate table tblvoucher;
+
+-- ==========================================
+-- 2. PURCHASE TABLES
+-- ==========================================
+truncate table tblpurchases;
+truncate table tblpurchase_items;
+truncate table tblpurchase_return;
+truncate table tblpurchase_return_voucher;
+
+-- ==========================================
+-- 3. CUSTOMER & SUPPLIER TRANSACTION TABLES
+-- ==========================================
+truncate table tblcustomer;
+truncate table tblsupplier;
+truncate table tblsupplierdetail;
+truncate table tblsupplierpay;
+truncate table tblcreditdetail;
+truncate table tblcreditpay;
+
+-- ==========================================
+-- 4. INVENTORY & STOCK ADJUSTMENT TABLES
+-- ==========================================
+truncate table tbl_transfer;
+truncate table tbl_transfer_details;
+truncate table tbldamage;
+truncate table tblstock_adjustment;
+
+-- ==========================================
+-- 5. EXPENSES TABLES
+-- ==========================================
+truncate table tblexpense;
+truncate table tblexpense_category;
+
+-- ==========================================
+-- 6. SYSTEM LOGS & HISTORIES
+-- ==========================================
+truncate table tbllog;
+truncate table tblselling_price_history;
+
+-- ==========================================
+-- 7. STAFF
+-- ==========================================
+truncate table tblstaff;
+
+-- ==========================================
+-- 8. SERVICE & REPAIR TABLES
+-- ==========================================
+truncate table tblserviceticket;
+truncate table tblserviceticket_accessories;
+truncate table tblserviceticket_parts;
+
+-- Reset product stock quantities
+truncate table tblproduct;
+
+SET FOREIGN_KEY_CHECKS = 1;
+SET SQL_SAFE_UPDATES = 1;
