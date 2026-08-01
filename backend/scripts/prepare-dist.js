@@ -16,8 +16,8 @@ if (!fs.existsSync(frontendRoot)) {
   process.exit(1);
 }
 
-console.log('Installing frontend dependencies...');
-run('npm install', frontendRoot);
+console.log('Installing frontend dependencies (including vite)...');
+run('npm install --include=dev', frontendRoot);
 
 console.log('Building frontend...');
 run('npm run build', frontendRoot);
