@@ -107,7 +107,7 @@ interface CustomersDropdownResponse {
 }
 
 // Default image path
-const DEFAULT_IMAGE = '/assets/icon.jpg';
+const DEFAULT_IMAGE = '/assets/logo.png';
 
 // Cart storage key
 const CART_STORAGE_KEY = 'pos_cart_items';
@@ -1351,13 +1351,19 @@ const POS: React.FC = () => {
                                                 className={`bg-white rounded-lg sm:rounded-xl shadow-sm hover:shadow-lg transition-all transform hover:-translate-y-1 overflow-hidden cursor-pointer group flex flex-col h-full border border-gray-200 ${product.stock <= 0 ? 'opacity-50 pointer-events-none' : ''
                                                     }`}
                                             >
-                                                <div className="h-16 xs:h-20 sm:h-32 w-full bg-gray-100 relative overflow-hidden">
+                                                <div className="h-12 sm:h-24 w-full bg-white relative overflow-hidden flex items-center justify-center">
                                                     <img
                                                         src={getItemImageUrl(product) || ''}
                                                         alt={product.name}
-                                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                                        className={`group-hover:scale-105 transition-transform duration-500 ${
+                                                            product.image
+                                                                ? 'w-full h-full object-cover'
+                                                                : 'max-h-[70%] max-w-[70%] w-auto h-auto object-contain'
+                                                        }`}
                                                         onError={(e) => {
-                                                            (e.target as HTMLImageElement).src = getImageUrl(DEFAULT_IMAGE) || '';
+                                                            const img = e.target as HTMLImageElement;
+                                                            img.src = getImageUrl(DEFAULT_IMAGE) || '';
+                                                            img.className = 'max-h-[70%] max-w-[70%] w-auto h-auto object-contain group-hover:scale-105 transition-transform duration-500';
                                                         }}
                                                     />
                                                     <div className="absolute top-1 right-1 bg-black/60 text-white text-[7px] sm:text-[10px] px-1 sm:px-1.5 py-0.5 rounded backdrop-blur-md font-mono">
