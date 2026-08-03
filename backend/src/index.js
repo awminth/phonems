@@ -43,7 +43,9 @@ const serviceReportRoutes = require('./routes/service-report.routes');
 const serviceRoutes = require('./routes/service.routes');
 const serviceticketRoutes = require('./routes/serviceticket.routes');
 const technicianRoutes = require('./routes/technician.routes');
+const helpChatRoutes = require('./routes/helpChat.routes');
 const authMiddleware = require('./middlewares/auth');
+const { ensureHelpChatUsageTable } = require('./services/helpChat.service');
 
 
 const app = express();
@@ -103,6 +105,7 @@ app.use('/api/reports/services', serviceReportRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/servicetickets', serviceticketRoutes);
 app.use('/api/technicians', technicianRoutes);
+app.use('/api/help-chat', helpChatRoutes);
 
 
 // Health Check
@@ -160,6 +163,11 @@ app.listen(PORT, async () => {
   const dbConnected = await testConnection();
   if (dbConnected) {
     console.log('✅ Database connected successfully');
+    try {
+      await ensureHelpChatUsageTable();
+    } catch (err) {
+      console.error('Help chat usage table setup failed:', err.message);
+    }
   } else {
     console.log('❌ Database connection failed');
   }
