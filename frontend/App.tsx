@@ -1,6 +1,7 @@
 
 import React, { Suspense, lazy } from 'react';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
+import HelpChat from './components/HelpChat';
 
 // Loading Component
 const PageLoader: React.FC = () => (
