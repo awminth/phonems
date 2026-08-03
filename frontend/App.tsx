@@ -65,7 +65,6 @@ const DamageList = lazy(() => import('./pages/sale/DamageList'));
 const DamageNew = lazy(() => import('./pages/sale/DamageNew'));
 const PostCreatorAI = lazy(() => import('./pages/dashboard/PostCreatorAI'));
 const Branch = lazy(() => import('./pages/dashboard/Branch'));
-const HelpChat = lazy(() => import('./components/HelpChat'));
 
 const App: React.FC = () => {
   return (
