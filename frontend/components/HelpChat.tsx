@@ -141,18 +141,26 @@ const HelpChat: React.FC = () => {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="fixed z-[9999] flex h-14 w-14 items-center justify-center rounded-full bg-sky-600 text-white shadow-xl shadow-sky-900/50 ring-2 ring-white/20 transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 bottom-[max(5.5rem,calc(env(safe-area-inset-bottom)+4.5rem))] right-4 md:bottom-6 md:right-6 md:h-12 md:w-12"
+        className="fixed z-[9999] flex h-14 w-14 items-center justify-center rounded-full bg-sky-600 text-white shadow-xl shadow-sky-900/50 ring-2 ring-white/20 transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 bottom-[calc(1rem+env(safe-area-inset-bottom,0px))] right-4 md:bottom-6 md:right-6 md:h-12 md:w-12"
         aria-label={open ? 'အကူအညီ ပိတ်ရန်' : 'အကူအညီ ဖွင့်ရန်'}
       >
         {open ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
       </button>
 
       {open && (
-        <div
-          className="fixed z-[9999] flex max-h-[min(70vh,28rem)] w-[min(100vw-1.5rem,22rem)] flex-col overflow-hidden rounded-2xl border border-gray-600 bg-gray-900 shadow-2xl bottom-[max(9.5rem,calc(env(safe-area-inset-bottom)+8.5rem))] right-3 md:bottom-24 md:right-6"
-          role="dialog"
-          aria-label="အကူအညီ chat"
-        >
+        <>
+          {/* Mobile backdrop */}
+          <button
+            type="button"
+            className="fixed inset-0 z-[9998] bg-black/50 md:hidden"
+            aria-label="chat ပိတ်ရန်"
+            onClick={() => setOpen(false)}
+          />
+          <div
+            className="fixed z-[9999] flex flex-col overflow-hidden rounded-2xl border border-gray-600 bg-gray-900 shadow-2xl left-3 right-3 bottom-[calc(5rem+env(safe-area-inset-bottom,0px))] max-h-[min(70dvh,32rem)] w-auto md:left-auto md:right-6 md:bottom-24 md:w-[22rem] md:max-h-[min(70vh,28rem)]"
+            role="dialog"
+            aria-label="အကူအညီ chat"
+          >
           <div className="flex items-center justify-between border-b border-gray-700 bg-gray-800 px-4 py-3">
             <div>
               <p className="text-sm font-semibold text-white">အကူအညီ (မြန်မာ)</p>
@@ -230,6 +238,7 @@ const HelpChat: React.FC = () => {
             </div>
           </div>
         </div>
+        </>
       )}
     </>,
     document.body

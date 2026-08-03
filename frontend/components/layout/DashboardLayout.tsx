@@ -215,7 +215,7 @@ const DashboardLayout: React.FC = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col bg-gray-900 text-gray-100 overflow-hidden">
+    <div className="h-full min-h-0 flex flex-col bg-gray-900 text-gray-100 overflow-hidden">
       {/* Header - Fixed Top */}
       <header className="bg-gray-800 border-b border-gray-700 shadow-md z-40 shrink-0">
         {/* Top Row: Logo, Menu Button, User Info */}

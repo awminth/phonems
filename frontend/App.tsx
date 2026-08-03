@@ -5,7 +5,7 @@ import HelpChat from './components/HelpChat';
 
 // Loading Component
 const PageLoader: React.FC = () => (
-  <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+  <div className="min-h-screen h-full bg-gray-900 flex items-center justify-center">
     <div className="flex flex-col items-center gap-4">
       <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
       <p className="text-gray-400 text-sm">Loading...</p>
@@ -70,83 +70,87 @@ const Branch = lazy(() => import('./pages/dashboard/Branch'));
 const App: React.FC = () => {
   return (
     <HashRouter>
-      <Suspense fallback={<PageLoader />}>
-        <Routes>
-          <Route path="/" element={<Login />} />
+      <div className="app-shell">
+        <Suspense fallback={<PageLoader />}>
+          <div className="app-shell-scroll">
+            <Routes>
+              <Route path="/" element={<Login />} />
 
-          {/* Dashboard Routes - Default to POS */}
-          <Route path="/dashboard" element={<DashboardLayout />}>
-            <Route index element={<POS />} />
-          </Route>
+              {/* Dashboard Routes - Default to POS */}
+              <Route path="/dashboard" element={<DashboardLayout />}>
+                <Route index element={<POS />} />
+              </Route>
 
-          {/* Post Creator AI - Standalone Page */}
-          <Route path="/dashboard/ai" element={<PostCreatorAI />} />
+              {/* Post Creator AI - Standalone Page */}
+              <Route path="/dashboard/ai" element={<PostCreatorAI />} />
 
-          {/* Sale Module */}
-          <Route path="/sale" element={<SaleDashboard />} />
-          <Route path="/sale/cash" element={<CashSaleList />} />
-          <Route path="/sale/credit" element={<CreditSaleList />} />
-          <Route path="/sale/return" element={<SaleReturnList />} />
-          <Route path="/sale-return/new" element={<SaleReturn />} />
-          <Route path="/sale/damage" element={<DamageList />} />
-          <Route path="/sale/damage/new" element={<DamageNew />} />
-          <Route path="/sale/new" element={<POS />} /> {/* Keep as alias if needed, or for direct access */}
+              {/* Sale Module */}
+              <Route path="/sale" element={<SaleDashboard />} />
+              <Route path="/sale/cash" element={<CashSaleList />} />
+              <Route path="/sale/credit" element={<CreditSaleList />} />
+              <Route path="/sale/return" element={<SaleReturnList />} />
+              <Route path="/sale-return/new" element={<SaleReturn />} />
+              <Route path="/sale/damage" element={<DamageList />} />
+              <Route path="/sale/damage/new" element={<DamageNew />} />
+              <Route path="/sale/new" element={<POS />} /> {/* Keep as alias if needed, or for direct access */}
 
-          {/* Standalone Modules */}
-          <Route path="/expense" element={<Expense />} />
-          <Route path="/users" element={<UserSetting />} />
-          <Route path="/customers" element={<Customers />} />
-          <Route path="/security" element={<Security />} />
-          <Route path="/financial" element={<Financial />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/branches" element={<DashboardLayout />}>
-            <Route index element={<Branch />} />
-          </Route>
+              {/* Standalone Modules */}
+              <Route path="/expense" element={<Expense />} />
+              <Route path="/users" element={<UserSetting />} />
+              <Route path="/customers" element={<Customers />} />
+              <Route path="/security" element={<Security />} />
+              <Route path="/financial" element={<Financial />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/branches" element={<DashboardLayout />}>
+                <Route index element={<Branch />} />
+              </Route>
 
-          {/* Reports */}
-          <Route path="/reports" element={<Reports />} />
-          <Route path="/reports/cash" element={<CashReport />} />
-          <Route path="/reports/credit" element={<CreditReport />} />
-          <Route path="/reports/return" element={<SaleReturnReport />} />
-          <Route path="/reports/payment" element={<PaymentReport />} />
-          <Route path="/reports/top-items" element={<TopItemsReport />} />
-          <Route path="/reports/payable" element={<PayableReport />} />
-          <Route path="/reports/receivable" element={<ReceivableReport />} />
-          <Route path="/reports/imei-history" element={<ImeiHistoryReport />} />
-          <Route path="/reports/brand-analytics" element={<BrandPerformanceReport />} />
-          <Route path="/reports/damage" element={<DamageReport />} />
-          <Route path="/reports/transfer" element={<TransferReport />} />
-          <Route path="/reports/receive" element={<ReceiveReport />} />
-          <Route path="/reports/adjustment" element={<StockAdjustmentReport />} />
-          <Route path="/reports/sale-items" element={<SaleItemsReport />} />
-          <Route path="/reports/selling-price" element={<SellingPriceReport />} />
-          <Route path="/reports/product-category" element={<ProductCategoryReport />} />
-          <Route path="/reports/external-purchases" element={<ExternalPurchasesReport />} />
-          <Route path="/reports/service" element={<ServiceReport />} />
-          <Route path="/reports/salesperson" element={<SalespersonReport />} />
+              {/* Reports */}
+              <Route path="/reports" element={<Reports />} />
+              <Route path="/reports/cash" element={<CashReport />} />
+              <Route path="/reports/credit" element={<CreditReport />} />
+              <Route path="/reports/return" element={<SaleReturnReport />} />
+              <Route path="/reports/payment" element={<PaymentReport />} />
+              <Route path="/reports/top-items" element={<TopItemsReport />} />
+              <Route path="/reports/payable" element={<PayableReport />} />
+              <Route path="/reports/receivable" element={<ReceivableReport />} />
+              <Route path="/reports/imei-history" element={<ImeiHistoryReport />} />
+              <Route path="/reports/brand-analytics" element={<BrandPerformanceReport />} />
+              <Route path="/reports/damage" element={<DamageReport />} />
+              <Route path="/reports/transfer" element={<TransferReport />} />
+              <Route path="/reports/receive" element={<ReceiveReport />} />
+              <Route path="/reports/adjustment" element={<StockAdjustmentReport />} />
+              <Route path="/reports/sale-items" element={<SaleItemsReport />} />
+              <Route path="/reports/selling-price" element={<SellingPriceReport />} />
+              <Route path="/reports/product-category" element={<ProductCategoryReport />} />
+              <Route path="/reports/external-purchases" element={<ExternalPurchasesReport />} />
+              <Route path="/reports/service" element={<ServiceReport />} />
+              <Route path="/reports/salesperson" element={<SalespersonReport />} />
 
 
 
-          {/* Purchase Module */}
-          <Route path="/purchase" element={<Purchase />} />
-          <Route path="/purchase/list" element={<PurchaseList />} />
-          <Route path="/purchase/inventory" element={<InventoryList />} />
-          <Route path="/purchase/remainder" element={<RemainderList />} />
-          <Route path="/purchase/category" element={<CategoryList />} />
-          <Route path="/purchase/company" element={<SupplierList />} />
-          <Route path="/purchase/supplier-in-out" element={<SupplierInOut />} />
-          <Route path="/purchase/return-list" element={<PurchaseReturnList />} />
-          <Route path="/purchase/return" element={<PurchaseReturn />} />
-          <Route path="/purchase/return/edit/:id" element={<PurchaseReturn />} />
-          <Route path="/purchase/voucher/new" element={<PurchaseVoucherNew />} />
-          <Route path="/purchase/voucher/edit/:id" element={<PurchaseVoucherNew />} />
-          <Route path="/purchase/transfer" element={<TransferPage />} />
-          <Route path="/purchase/receive" element={<ReceivePage />} />
+              {/* Purchase Module */}
+              <Route path="/purchase" element={<Purchase />} />
+              <Route path="/purchase/list" element={<PurchaseList />} />
+              <Route path="/purchase/inventory" element={<InventoryList />} />
+              <Route path="/purchase/remainder" element={<RemainderList />} />
+              <Route path="/purchase/category" element={<CategoryList />} />
+              <Route path="/purchase/company" element={<SupplierList />} />
+              <Route path="/purchase/supplier-in-out" element={<SupplierInOut />} />
+              <Route path="/purchase/return-list" element={<PurchaseReturnList />} />
+              <Route path="/purchase/return" element={<PurchaseReturn />} />
+              <Route path="/purchase/return/edit/:id" element={<PurchaseReturn />} />
+              <Route path="/purchase/voucher/new" element={<PurchaseVoucherNew />} />
+              <Route path="/purchase/voucher/edit/:id" element={<PurchaseVoucherNew />} />
+              <Route path="/purchase/transfer" element={<TransferPage />} />
+              <Route path="/purchase/receive" element={<ReceivePage />} />
 
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-        <HelpChat />
-      </Suspense>
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          </div>
+          <HelpChat />
+        </Suspense>
+      </div>
     </HashRouter>
   );
 };

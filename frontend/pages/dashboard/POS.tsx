@@ -854,7 +854,7 @@ const POS: React.FC = () => {
     };
 
     return (
-        <div className="h-full flex flex-col lg:flex-row overflow-hidden relative bg-gray-900">
+    <div className="h-full min-h-0 flex flex-col overflow-hidden relative bg-gray-900">
 
             {/* Toast Notification */}
             {notification && (
